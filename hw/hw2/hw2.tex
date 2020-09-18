@@ -1,0 +1,360 @@
+\documentclass[12pt]{article}
+%% meta information
+% JHU Fall 2020 CS 220 Intermediate Programming Homework 2
+% Authors: Ali Darvish, Sing Chun Lee
+% Contributors: David Hovemeyer, Joanne Selinski, Misha Kazhdan, Sara More, ... 
+
+%% packages
+\usepackage[margin=1in]{geometry}	% change page margins
+\usepackage[dvipsnames]{xcolor}		% additional color names
+% color names reference: https://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage{fancyhdr} 				% customize header
+\usepackage[tikz]{bclogo}			% additional symbols
+% symbol reference: http://tug.ctan.org/info/symbols/comprehensive/symbols-letter.pdf
+\usepackage{mdframed}				% use to create caution box
+\usepackage{minted}					% code block colors
+% **Note**: to use minted, need to add compile flag -shell-escape
+\usemintedstyle{emacs}				% mint color style
+% more styles on: https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{xparse}					% show inline code
+\usepackage{realboxes}				% inline color box
+\usepackage{mdwlist}				% suspend resume enumerate list
+
+%% variables
+% Homework Assignment Number
+\def \HWNumber {2}
+% Homework Assignment Due Date
+\def \HWDueDate {Sep 18\textsuperscript{th} (Fri) 2020, 11:00am}
+
+%% new environment
+\newenvironment{caution}{\par\begin{mdframed}[linewidth=1pt,linecolor=YellowOrange]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcdanger]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{danger}{\par\begin{mdframed}[linewidth=1pt,linecolor=Red]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcbombe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{tip}{\par\begin{mdframed}[linewidth=1pt,linecolor=ForestGreen]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bclampe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{info}{\par\begin{mdframed}[linewidth=1pt,linecolor=Cerulean]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcinfo]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{answerbox}{\par\begin{mdframed}[linewidth=1pt,linecolor=Black]%
+		\begin{list}{}{\leftmargin=0.5cm}\item[\Large\bcplume]}
+		{\end{list}\end{mdframed}\par}
+\newminted[c99]{c}{obeytabs=true,tabsize=4}	% new c style, changed tabsize to 4
+\newenvironment{codeblock}{\VerbatimEnvironment\begin{c99*}{}}{\end{c99*}} % use the new c style as code block
+	
+%% new commands
+\newcommand{\answer}[2]{
+	\suspend{enumerate}
+	\begin{answerbox}
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+	\resume{enumerate}
+}
+
+\newcommand{\answerlast}[2]{
+	\suspend{enumerate}
+	\begin{answerbox} 
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+}
+	
+%% headers
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fall 2020}
+\chead{Intermediate Programming}
+\lhead{EN.601.220}
+\lfoot{\copyright2020 Johns Hopkins University}
+\rfoot{Page \thepage}
+
+%% student information variables
+\def \SName {}
+\def \JHEID {}
+
+\begin{document}
+% Student information boxes and the score box
+\noindent Name: \framebox[5.5cm]{\SName\rule{0pt}{12pt}} \hfill
+JHEID: \framebox[3cm]{\JHEID\rule{0pt}{12pt}}\hfill
+Score: \framebox[2cm]{\rule{0pt}{12pt}}
+
+\section*{Homework \HWNumber}
+
+\begin{caution}
+	\textbf{CAUTION}
+	
+	\begin{itemize}
+		\item You are expected to work individually.
+		\item \textbf{Due: Friday September 25\textsuperscript{th} at 11pm EST (Baltimore time).}
+		\item \textit{This assignment is worth 20 points. }
+	\end{itemize}
+\end{caution}
+
+\begin{danger}
+	\textbf{SUBMISSION REQUIREMENT}
+	
+	Answer each problem in this \textbf{pdf}, in the area to the side of the problem, or immediately after it.  You may either type your solutions, or hand-write and scan them in, but they need to be legible, and part of this document. If you need to add additional sheets, please make a note near the problem itself that the grader should "see attached". Submit the \textbf{pdf} document via GradeScope once you have added your answers.
+\end{danger}
+
+\subsection*{Learning Objectives}
+\begin{tip}
+	\textbf{OBJECTIVES}
+	
+	\begin{itemize}
+		\item control flow
+		\item c-style strings
+		\item data types
+		\item arrays
+	\end{itemize}
+\end{tip}
+
+\begin{info}
+	\textbf{INFO}
+	
+	Many problems make use of “code fragments", which can be thought of as pieces of code extracted from complete programs. While a code fragment will not generally compile by itself, we will assume that it exists in a sensible framework (i.e. is inside a properly formed \mintinline{c}|main()|, all appropriate headers and libraries have been included, etc.). We will also assume that there is no other code in the program that would impact the behavior of the fragment; each fragment is designed to be understood in isolation.
+\end{info}
+
+\newpage
+\subsubsection*{Part I: Code Puzzles. [1 point each problem]}
+
+Trace through each code fragment and write down the exact output that will be printed if the fragment is run, assuming it is embedded in a proper program with the necessary \mintinline{c}|#include| statements. If there is no output generated, write ``\textbf{no output}", and give one sentence explaining why.\\ 
+
+\begin{tip}
+	\textbf{TIP}
+	
+	Note that these are called ``puzzles" because their behavior may not be intuitive or correct (though the code itself is valid and will compile, albeit with warnings in some cases).  \textbf{\textit{If you think you have spotted a typo in Part I, it is intentional!}}
+\end{tip}
+
+\begin{enumerate}
+% Q1
+\item \begin{codeblock}
+int i = 1;
+while (i < 10); {
+	if (i % 2 >= 0)
+	printf("%d ", i++);
+}
+\end{codeblock}
+\answer{2.8cm}{%
+% Type your answers here	
+}
+% Q2
+\item \begin{codeblock}
+for (int i = 0 ; i < 5 ; i++) {
+	for (int j = 0 ; j < 2 ; j++) {
+		if( i == j + 1 ) { break; }
+		else { printf( "%d %d\n" , i , j ); }
+	}
+}
+\end{codeblock}
+\answer{2.8cm}{%
+% Type your answers here	
+}
+% Q3
+\item \begin{codeblock}
+int x = 0;
+while (true) {
+	printf("x = %d\n", ++x);
+	if (x = 4) { break; }
+}
+\end{codeblock}
+\answer{4cm}{%
+% Type your answers here
+}
+% Q4
+\item \begin{codeblock}
+int i = 15;
+while (i > 10) {
+	int sum = i;
+	sum = sum + i;
+	printf ("%d\n", sum);
+	i--;
+}
+\end{codeblock}
+\answer{4cm}{%
+% Type your answers here
+}
+% Q5
+\item \begin{codeblock}
+char str[] = "this is a test only!";
+for(int i = 0; i < (int)strlen(str); i++) {
+	printf("str[%d] = %c\n", i, str[i]);
+	if(str[i] == ' ') { str[i] = 0; }
+}
+printf("strlen( %s ) = %d\n", str, (int)strlen(str));
+\end{codeblock}
+\answer{3cm}{%
+% Type your answers here
+}
+% Q6
+\item \begin{codeblock}
+char c = 'A';
+while (c >= 'a')
+	printf("%c ", c--);
+\end{codeblock}
+\answer{3cm}{%
+% Type your answers here
+}
+% Q7
+\item \begin{codeblock}
+int a = 1;
+switch(a) {
+	case '1':
+		printf("ONE\n");
+	break;
+	case '2':
+		printf("TWO\n");
+	break;
+	defaultt:
+		printf("THREE\n");
+}
+\end{codeblock}
+\answer{3cm}{%
+% Type your answers here
+}
+% Q8
+\item \begin{codeblock}
+float f = 0.0f;
+int i;
+for(i = 0; i < 20; i++)
+	f = f + 0.1f;
+if (f == 2.0f)
+	printf("f is 2.0 \n");
+else
+	printf("f is NOT 2.0\n");
+\end{codeblock}
+\answer{4cm}{%
+% Type your answers here
+}
+% Q9
+\item \begin{codeblock}
+int i = 3;
+if ((--i < 3) || (i--/4) || !(i-- > 2))
+	printf("Hello\n");
+if (i--)
+	printf("Goodbye\n");
+printf("%d\n", i);
+\end{codeblock}
+\answerlast{4cm}{%
+% Type your answers here
+}
+
+\newpage
+
+\subsubsection*{Part II: Code Correctness. [1 point each problem]}
+
+Trace through the code fragments and explain what is wrong with them. You are not expected to show the output.
+
+\resume{enumerate}
+% Q10
+\item \begin{codeblock}
+// collect a valid face number of a deck
+int face = 0;
+do {
+	char msg[] = "Please enter the face number [1-13]: "; 
+	printf( "%s", msg);
+	scanf("%d", &face);
+} while (face >= 1 && face <= 13);
+\end{codeblock}
+\answer{5cm}{%
+% Type your answers here
+}
+% Q11
+\item \begin{codeblock}
+float n;
+printf("Enter a number: ");
+scanf("%f", n);
+printf("You entered %f \n", n);
+\end{codeblock}
+\answer{5cm}{%
+% Type your answers here
+}
+% Q12
+\item \begin{codeblock}
+char source[] = "hello folks";
+char destination[11];
+strcpy(destination, source);
+for(int i = 0; source[i]; i++) {
+	printf("%c" , source[i]); 
+}
+printf("\n");
+for(int i = 0; destination[i]; i++) {
+	printf("%c" , destination[i]); 
+}
+printf("\n");
+\end{codeblock}
+\answerlast{6cm}{%
+% Type your answers here
+}
+
+\subsubsection*{Part III: Code Reading. [2 points each problem]}
+
+At a high level, explain what the following functions or code fragments do. The explanation should \textbf{\underline{not}} be a direct translation of the code statements.
+
+\resume{enumerate}
+% Q13
+\item \begin{codeblock}
+unsigned fun1(unsigned a, unsigned b) {
+	int count = 0;
+	int sum = b;
+	while (sum <= a) {
+		sum += b;
+		++count;
+	}
+	return count;
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q14
+\item \begin{codeblock}
+// Assume that "str" is assigned some string value
+void fun2(char str[]) {
+	for(unsigned int i = 0; i < strlen(str); i++) {
+		if( str[i] >= 'A' && str[i] <= 'Z' ) { 
+			str[i] -= 'A' - 'a'; 
+		}
+	}
+	printf("%s\n", str);
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q15
+\item \begin{codeblock}
+int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+int p = sizeof(arr) / sizeof(int) - 1;
+int k = arr[p];
+for (int j = p; j >= 1; j--)
+	arr[j] = arr[j - 1];
+arr[0] = k;
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q16
+\item \begin{codeblock}
+// Assume "abs" is a defined/accessible function and
+// returns the absolute value of what is passed into it   
+int fun3(int a, int b) {
+	return ((a + b) + abs(b - a)) / 2;
+}
+\end{codeblock}
+\answerlast{5.5cm}{%
+% Type your answers here
+} 
+% Note: suspend has already ended the environment
+
+\begin{center}
+	\vspace{1cm}
+	\large \textless The END of Homework 2\textgreater
+\end{center}
+
+\end{document}
