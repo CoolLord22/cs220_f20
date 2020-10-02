@@ -1,0 +1,347 @@
+\documentclass[12pt]{article}
+%% meta information
+% JHU Fall 2020 CS 220 Intermediate Programming Homework 4
+% Authors: Ali Darvish, Sing Chun Lee
+% Contributors: David Hovemeyer, Joanne Selinski, Misha Kazhdan, Sara More, ... 
+
+%% packages
+\usepackage[margin=1in]{geometry}	% change page margins
+\usepackage[dvipsnames]{xcolor}		% additional color names
+% color names reference: https://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage{fancyhdr} 				% customize header
+\usepackage[tikz]{bclogo}			% additional symbols
+% symbol reference: http://tug.ctan.org/info/symbols/comprehensive/symbols-letter.pdf
+\usepackage{mdframed}				% use to create caution box
+\usepackage{minted}					% code block colors
+\usepackage{listings}
+% **Note**: to use minted, need to add compile flag -shell-escape
+% \usemintedstyle{emacs}				% mint color style
+% more styles on: https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{xparse}					% show inline code
+\usepackage{realboxes}				% inline color box
+\usepackage{mdwlist}				% suspend resume enumerate list
+
+%% variables
+% Homework Assignment Number
+\def \HWNumber {4}
+% Homework Assignment Due Date
+\def \HWDueDate {Friday October 9\textsuperscript{th} at 11pm EDT (Baltimore time)}
+
+%% new environment
+\newenvironment{caution}{\par\begin{mdframed}[linewidth=1pt,linecolor=YellowOrange]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcdanger]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{danger}{\par\begin{mdframed}[linewidth=1pt,linecolor=Red]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcbombe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{tip}{\par\begin{mdframed}[linewidth=1pt,linecolor=ForestGreen]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bclampe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{info}{\par\begin{mdframed}[linewidth=1pt,linecolor=Cerulean]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcinfo]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{answerbox}{\par\begin{mdframed}[linewidth=1pt,linecolor=Black]%
+		\begin{list}{}{\leftmargin=0.5cm}\item[\Large\bcplume]}
+		{\end{list}\end{mdframed}\par}
+\newminted[c99]{c}{obeytabs=true,tabsize=4}	% new c style, changed tabsize to 4
+\newenvironment{codeblock}{\VerbatimEnvironment\begin{c99*}{}}{\end{c99*}} % use the new c style as code block
+	
+%% new commands
+\newcommand{\answer}[2]{
+	
+	\begin{answerbox}
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+	
+}
+
+\newcommand{\answercon}[2]{
+	
+	\begin{answerbox}
+		\textbf{ANSWER (continued):} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+	
+}
+
+\newcommand{\answerlast}[2]{
+	\suspend{enumerate}
+	\begin{answerbox} 
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+}
+	
+%% headers
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fall 2020}
+\chead{Intermediate Programming}
+\lhead{EN.601.220}
+\lfoot{\copyright2020 Johns Hopkins University}
+\rfoot{Page \thepage}
+
+%% student information variables
+\def \SName {}
+\def \JHEID {}
+
+\begin{document}
+% Student information boxes and the score box
+\noindent Name: \framebox[5.5cm]{\SName\rule{0pt}{12pt}} \hfill
+JHEID: \framebox[3cm]{\JHEID\rule{0pt}{12pt}}\hfill
+Score: \framebox[2cm]{\rule{0pt}{12pt}}
+
+\section*{Homework \HWNumber}
+
+\begin{caution}
+	\textbf{CAUTION}
+	
+	\begin{itemize}
+		\item You are expecte to work individually.
+		\item \textbf{Due: \HWDueDate.}
+		\item \textit{This assignment is worth 20 points. }
+	\end{itemize}
+\end{caution}
+
+\begin{danger}
+	\textbf{SUBMISSION REQUIREMENT}
+	
+	Answer each problem in this \textbf{pdf}, in the area to the side of the problem, or immediately after it.  You may either type your solutions, or hand-write and scan them in, but they need to be legible, and part of this document. If you need to add additional sheets, please make a note near the problem itself that the grader should "see attached". Submit the \textbf{pdf} document via GradeScope once you have added your answers.
+\end{danger}
+
+\subsection*{Learning Objectives}
+\begin{tip}
+	\textbf{OBJECTIVES}
+	
+	\begin{itemize}
+		\item pointers, pointers arithmetic
+		\item dynmaic allocation
+		\item type conversions
+		\item bitwise operations
+		\item arrays
+	\end{itemize}
+\end{tip}
+
+\begin{info}
+	\textbf{INFO}
+	
+	Many problems make use of “code fragments", which can be thought of as pieces of code extracted from complete programs. While a code fragment will not generally compile by itself, we will assume that it exists in a sensible framework (i.e. is inside a properly formed `main()`', all appropriate headers and libraries have been included, etc.). We will also assume that there is no other code in the program that would impact the behavior of the fragment; each fragment is designed to be understood in isolation.
+\end{info}
+
+
+
+\subsubsection*{Part I: Code Writing}
+Write a code fragment to perform the specified task; remember, it's a fragment, so you don't have to show the include statements or main(), but you should write proper C code that could be compiled and run correctly.
+
+1. You are given an array \textbf{arr} of size \textbf{n-1} which has unique, unordered, positive integers between \textbf{1, 2, ..., n} except one of the numbers is missing. The function should return the missing number by conducting \textbf{only one pass of the array `arr`}. [4 points]
+
+\begin{tip}
+	\textbf{EXAMPLES}
+
+	\textbf{Example 1:} arr = {1, 3}, size = 3 $\rightarrow$  function returns 2, as the number 2 is missing from the array.
+
+	\textbf{Example 2:} arr = {6, 2, 1, 3, 5}, size = 6 $\rightarrow$ function returns 4, as the number 4 is missing.
+\end{tip}
+
+\begin{tip}
+	\textbf{TIP}
+
+	You can assume that \textbf{arr} has valid positive integers only, \textbf{n $\textgreater$= 2} and \textbf{$\vert$ arr $\vert$ = n - 1}.
+\end{tip}
+
+\begin{codeblock}
+/** Function to find the missing value between {1, ..., n} in arr.
+*  @param arr is an interger array of length n - 1 with unique values
+*  in {1, ..., n}
+*  @param n is the total number of values in the array.
+*  @return the missing integer.
+*/
+int findMissingValue(int *arr, int n) {
+\end{codeblock}
+\answer{2.8cm}{%
+	% Type your answers here	
+}
+\newpage
+\answercon{7.6cm}{%
+	% Type your answers here	
+}
+\begin{codeblock}
+}
+\end{codeblock}
+
+	
+2. Suppose you have a node struct defined as below: [5 points]
+
+\begin{codeblock}
+typedef struct _node {
+    Node *next;
+    char *str;
+} Node;
+\end{codeblock}
+
+You are given a function that takes in two Node* pointers to two different linked lists. Each linked list node has a string represented by a character array that is properly null terminated. You're function is supposed to return true if the concatenation of strings in a linked list match each other, else return false.
+
+
+\begin{tip}
+	\textbf{EXAMPLES}
+
+	\textcolor{BlueGreen}{List 1}: "h" -$\textgreater$ "el" -$\textgreater$ "l" -$\textgreater$ "o" -$\textgreater$ NULL
+	\newline
+	\textcolor{BlueGreen}{List 2}:: "he" -$\textgreater$ "llo" -$\textgreater$ NULL
+	\newline
+	Return: \textcolor{Green}{True}
+	
+	\textcolor{BlueGreen}{List 1}:: "je" -$\textgreater$ "lc -$\textgreater$ "l" -$\textgreater$ "o" -$\textgreater$ NULL
+	\newline
+	\textcolor{BlueGreen}{List 2}:: "h" -$\textgreater$ "e" -$\textgreater$ "ll" -$\textgreater$ "" -$\textgreater$ "o" -$\textgreater$ NULL
+	\newline
+	Return: \textcolor{WildStrawberry}{False}
+		
+	\textcolor{BlueGreen}{List 1}:: "e" -$\textgreater$ "llo" -$\textgreater$ "h" -$\textgreater$ NULL
+	\newline
+	\textcolor{BlueGreen}{List 2}:: "h" -$\textgreater$ "e" -$\textgreater$ "l" -$\textgreater$ "l" -$\textgreater$ "o" -$\textgreater$ NULL
+	\newline
+	Return: \textcolor{WildStrawberry}{False}
+
+\end{tip}
+\newpage
+
+\begin{codeblock}
+bool areListsMatching(Node *list1, Node *list2) {
+\end{codeblock}
+\answer{19.2cm}{%
+	% Type your answers here	
+}
+\begin{codeblock}
+}
+\end{codeblock}
+
+\subsubsection*{Part II: Code Explanation}
+Give an explanation, in complete English sentences, of the following code snippets. The explanation should be sufficient for a classmate to understand what the code does, even if they had not previously been exposed to it. [1.5 point]
+
+1. [1.5 point]
+\begin{codeblock}
+int function1(int num1, int num2) {
+    int num = num1 ^ num2;
+    int result = 0;
+    while(num > 0) {
+        result += (num & 1);
+        num <<= 1;
+    }
+    return result;
+}
+\end{codeblock}
+\answer{4.1cm}{%
+	% Type your answers here	
+}
+
+2. [1.5 point]
+\begin{codeblock}
+int function2(unsigned int num) {
+    return num & ~(num - 1);
+}
+\end{codeblock}
+\answer{4.1cm}{%
+	% Type your answers here	
+}
+\newpage
+3. [1.5 point]
+\begin{codeblock}
+int f1(unsigned int x) {
+  int count = 0;
+  while(x) {
+      count++; x = x&(x-1);
+  }
+  return count;
+}
+\end{codeblock}
+\answer{4cm}{%
+	% Type your answers here	
+}
+
+\subsubsection*{Part III: Essay / Short Answer}
+
+1. \mintinline{c}|double ldexp(double x, int exponent)| is a C math function that returns \textbf{x} multiplied by \textbf{2} raised to the power of \textbf{exponent}. How many narrowing and how many promotions happen automatically in the following code line? Name them one by one and explain each one separately. [1.5 points]
+\begin{codeblock}
+float f = 2.2f * ldexp(24.4, 3.0 * 2) - 4.4;
+\end{codeblock}
+\answer{6.2cm}{%
+	% Type your answers here	
+}
+
+2. What is the problem with the following code? Explain. [1 point]
+
+\begin{codeblock}
+#include<stdio.h>
+int main() {
+    int *p = (int *)malloc(sizeof(int));
+    p = NULL;
+    free(p);
+}
+\end{codeblock}
+\answer{6cm}{%
+	% Type your answers here	
+}
+
+
+\subsubsection*{Part IV: Code Tracing}
+
+Trace through the code fragment below and write down the exact output that will be printed if the fragment is run. Note that these are called “puzzles" because their behavior may not be intuitive or correct (though the code itself is valid and will compile).
+
+
+1. [1 point]
+\begin{codeblock}
+#include <stdio.h>
+int main(void) {
+  int a = 10; int *b; int **c = &b; b = &a;
+  printf("%d\n", **c++);   
+  return 0;
+}
+\end{codeblock}
+\answer{1.9cm}{%
+	% Type your answers here	
+}
+
+2. [1.5 points]
+\begin{codeblock}
+#include <stdio.h>
+int main() {
+  int a[] = {1, 2, 3, 4, 5};
+  int *b = a; int **c = &b;
+  printf("%d\n", **c*2);
+  printf("%d\n", **c-2*4);
+  printf("%d\n", **c+1-*b+1);
+  return 0;  
+}
+\end{codeblock}
+\answer{3.8cm}{%
+	% Type your answers here	
+}
+
+3. [1.5 points]
+\begin{codeblock}
+#include <stdio.h>
+int main() {
+  int a[][3] = {{1, 2, 3}, {6, 5, 4}, {7, 8, 9}};
+  int *b = a[0]; int **c = &b;
+  printf("%d\n", b[2]); 
+  printf("%d\n", **c);
+  printf("%d\n", *(*c+3));
+  return 0;  
+}
+\end{codeblock}
+\answer{3.8cm}{%
+	% Type your answers here	
+}
+
+\begin{center}
+	\vspace{1cm}
+	\large \textless The END of Homework \HWNumber\textgreater
+\end{center}
+	
+
+\end{document}
