@@ -1,0 +1,375 @@
+\documentclass[12pt]{article}
+%% meta information
+% JHU Fall 2020 CS 220 Intermediate Programming Homework 6
+% Authors: Ali Darvish, Sing Chun Lee
+% Contributors: David Hovemeyer, Joanne Selinski, Misha Kazhdan, Sara More, ... 
+
+%% packages
+\usepackage[margin=1in]{geometry}	% change page margins
+\usepackage[dvipsnames]{xcolor}		% additional color names
+% color names reference: https://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage{fancyhdr} 				% customize header
+\usepackage[tikz]{bclogo}			% additional symbols
+% symbol reference: http://tug.ctan.org/info/symbols/comprehensive/symbols-letter.pdf
+\usepackage{mdframed}				% use to create caution box
+\usepackage{minted}					% code block colors
+% **Note**: to use minted, need to add compile flag -shell-escape
+\usemintedstyle{emacs}				% mint color style
+% more styles on: https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{xparse}					% show inline code
+\usepackage{realboxes}				% inline color box
+\usepackage{mdwlist}				% suspend resume enumerate list
+
+%% variables
+% Homework Assignment Number
+\def \HWNumber {6}
+% Homework Assignment Due Date
+\def \HWDueDate {Friday November 13\textsuperscript{th} at 11pm EST (Baltimore time)}
+
+%% new environment
+\newenvironment{caution}{\par\begin{mdframed}[linewidth=1pt,linecolor=YellowOrange]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcdanger]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{danger}{\par\begin{mdframed}[linewidth=1pt,linecolor=Red]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcbombe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{tip}{\par\begin{mdframed}[linewidth=1pt,linecolor=ForestGreen]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bclampe]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{info}{\par\begin{mdframed}[linewidth=1pt,linecolor=Cerulean]%
+		\begin{list}{}{\leftmargin=0cm}\item[\Large\bcinfo]}
+		{\end{list}\end{mdframed}\par}
+\newenvironment{answerbox}{\par\begin{mdframed}[linewidth=1pt,linecolor=Black,splittopskip=2\topsep]%
+		\begin{list}{}{\leftmargin=0.5cm}\item[\Large\bcplume]}
+		{\end{list}\end{mdframed}\par}
+\newminted[c11]{c++}{obeytabs=true,tabsize=4}	% new c++ style, changed tabsize to 4
+\newenvironment{codeblock}{\VerbatimEnvironment\begin{c11*}{}}{\end{c11*}} % use the new c++ style as code block
+	
+%% new commands
+\newcommand{\answer}[2]{
+	\suspend{enumerate}
+	\begin{answerbox}
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+	\resume{enumerate}
+}
+
+\newcommand{\answerlast}[2]{
+	\suspend{enumerate}
+	\begin{answerbox} 
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+}
+
+\newcommand{\answerb}[2]{
+	\begin{answerbox} 
+		\textbf{ANSWER:} 
+		
+		\ifthenelse{\equal{#2}{}}{\vspace{#1}}{#2}
+	\end{answerbox}
+}
+	
+%% headers
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fall 2020}
+\chead{Intermediate Programming}
+\lhead{EN.601.220}
+\lfoot{\copyright2020 Johns Hopkins University}
+\rfoot{Page \thepage}
+
+%% student information variables
+\def \SName {}
+\def \JHEID {}
+
+\begin{document}
+% Student information boxes and the score box
+\noindent Name: \framebox[5.5cm]{\SName\rule{0pt}{12pt}} \hfill
+JHEID: \framebox[3cm]{\JHEID\rule{0pt}{12pt}}\hfill
+Score: \framebox[2cm]{\rule{0pt}{12pt}}
+
+\section*{Homework \HWNumber}
+
+\begin{caution}
+	\textbf{CAUTION}
+	
+	\begin{itemize}
+		\item You are expected to work individually.
+		\item \textbf{Due: \HWDueDate.}
+		\item \textit{This assignment is worth 20 points. }
+	\end{itemize}
+\end{caution}
+
+\begin{danger}
+	\textbf{SUBMISSION REQUIREMENT}
+	
+	Answer each problem in this \textbf{pdf}, in the area to the side of the problem, or immediately after it.  You may either type your solutions, or hand-write and scan them in, but they need to be legible, and part of this document. If you need to add additional sheets, please make a note near the problem itself that the grader should "see attached". Submit the \textbf{pdf} document via GradeScope once you have added your answers.
+\end{danger}
+
+\subsection*{Learning Objectives}
+\begin{tip}
+	\textbf{OBJECTIVES}
+	
+	\begin{itemize}
+		\item c++ file i/o
+		\item standard template library
+		\item c++ references
+		\item classes and objects
+	\end{itemize}
+\end{tip}
+
+\begin{info}
+	\textbf{INFO}
+	
+	Several problems make use of “code fragments," which can be thought of as pieces of code extracted from complete programs. While a code fragment will not generally compile by itself, we will assume that it exists in a sensible framework (i.e. is inside a properly formed \mintinline{c++}|main()|, all appropriate headers and libraries have been included, etc.). We will also assume that there is no other code in the program that would impact the behavior of the fragment; each fragment is designed to be understood in isolation.
+\end{info}
+
+\newpage
+\subsubsection*{Part I: Code Tracing. [1 point each problem]}
+
+Trace through each code fragment and write down the exact output that will be printed if the fragment is run. If the value of some output generated cannot be determined, write \textbf{"unknown"} in place of that value.\\ 
+
+\begin{enumerate}
+% Q1
+\item For this question, assume the user inputs \mintinline{c++}|cs220| and then \mintinline{c++}|Ctrl-d| several times (to signal end-of-input) as the program runs:\begin{codeblock}
+int main() {
+	char c;
+	std::string s = "Welcome to ";
+	while (std::cin.get(c)) {
+		s += c;
+	}
+	s += '!';
+	std::cout << s << std::endl;
+	return 0;
+}
+\end{codeblock}
+\answer{5cm}{%
+% Type your answers here	
+}
+% Q2
+\item \begin{codeblock}
+int main() {
+	std::vector<int> v(10);
+	for(int i = 0; i < v.size(); ++i)
+	v[i] = 5 - i;
+	while(!v.empty()) {
+		std::cout << v.back() << std::endl;
+		v.pop_back();
+	}
+	return 0;
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here	
+}
+% Q3
+\item \begin{codeblock}
+int main() {
+	std::map<int,char> m;
+	m[3] = 50;
+	m[2] = 1;
+	m[4] = 50;
+	m[5] = 48;
+	m[2] = 115;
+	m[1] = 99;
+	std::stringstream ss;
+	for(std::map<int,char>::reverse_iterator it = m.rbegin(); 
+		it != m.rend(); ++it) {
+		ss << it->first << ": " << it->second << std::endl;
+	}
+	std::cout << ss.str();
+	return 0;
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q4
+\item \begin{codeblock}
+float foo(int& x, int y) {
+	x *= 1.5;
+	y *= 0.5;
+	return x + y;
+}  
+
+int main() {
+	int a = 2;
+	float b = 3.f;
+	int c = foo(a,b);
+	std::cout << "a = " << a << ", b = " << b << ", foo(a,b) = " 
+		<< c << std::endl;
+	return 0;
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q5
+\item \begin{codeblock}
+class Foo {
+	public:
+	Foo() : str("\0") {}
+	std::string getStr() const { return str; }
+	private:
+	std::string str;
+};
+
+int main() {
+	Foo bar;
+	std::cout << bar.getStr().length();
+	return 0;
+}
+\end{codeblock}
+\answerlast{4.8cm}{%
+% Type your answers here
+}
+
+\subsubsection*{Part II: Code Explanation. [2 points each problem]}
+
+Give an explanation, in complete English sentences, of the following concepts. 
+
+\begin{tip}
+	\textbf{TIP}
+	
+	The explanation should be sufficient for a classmate to understand the concept, even if they had not previously been exposed to it. 
+\end{tip}
+
+\resume{enumerate}
+% Q6
+\item Explain what is wrong with the following code fragment (other than missing \mintinline{c++}|#include|s):\begin{codeblock}
+using namespace std;
+using vit = vector<string>::iterator;
+void print(const vector<string>& s) {
+	for(vit it = s.begin(); it != s.end(); ++it ){ 
+		cout << *it << endl; 
+	}
+}
+\end{codeblock}
+\answer{5cm}{%
+% Type your answers here
+}
+% Q7
+\item Explain what is wrong with the following code fragment (other than missing \mintinline{c++}|#include|s):\begin{codeblock}
+class Foo {
+private:
+	char label;
+};
+
+int main() {
+	Foo bar;
+	bar.label = 'c';
+	return 0;
+}
+\end{codeblock}
+\answer{5.5cm}{%
+% Type your answers here
+}
+% Q8
+\item Explain what is wrong with the following code fragment (other than missing \mintinline{c++}|#include|s):\begin{codeblock}
+class Foo {
+public:
+	Foo(int v): _val(v) { }
+	int getVal() const { return _val; }
+private:
+	int _val;
+};
+
+int main() {
+	Foo bar;
+	std::cout << "my foo's val is " << bar.getVal() << std::endl;
+	return 0;
+}
+\end{codeblock}
+\answerlast{3cm}{%
+% Type your answers here
+}
+
+\subsubsection*{Part III: Code Writing. [3 points each problem]}
+
+Write a code fragment to perform the specified task; remember, it's a fragment, so you don't have to show the \mintinline{c++}|#include| statements or \mintinline{c++}|main()| unless specifically requested, but you should write proper C++ code that could be compiled and run correctly.
+
+\resume{enumerate}
+% Q9
+\item In mathematics, a hyperbolic number is represented by two real numbers $x$ and $y$, and is often denoted as $x + yj$, where $j$ represents the non-real square root of $1$. i.e. $j^2$=1, but $j$ is not a real number. Consider the following file named \mintinline{c++}|Hyperbolic.h| which includes a definition for a class named \mintinline{c++}|Hyperbolic| to represent an arbitrary hyperbolic number:\begin{codeblock}
+// Hyperbolic.h
+#ifndef HYPERBOLIC_H
+#define HYPERBOLIC_H
+class Hyperbolic {
+private: 
+	double _x; // first real number x in "x + yj"
+	double _y; // second real number y in "x + yj"
+public:     
+	Hyperbolic(double x, double y):_x(x), _y(y) {}
+	double getX() const { return _x; }
+	double getY() const { return _y; }
+	void setX(double x) { _x = x; }
+	void setY(double y) { _y = y; }	   
+	
+	/* adds other to this number and returns a new complex number     
+	object representing its sum */
+	Hyperbolic add(Hyperbolic& other) const;  	//prototype only
+	
+	/* outputs to standard output the hyperbolic number in the form 
+	x + yj. you do not need to do any pretty printing e.g. if, 
+	for example, y is negative x + -yj is fine */
+	void output() const;                		//prototype only
+};  
+#endif
+\end{codeblock}
+The procedure for adding hyperbolic numbers $x + yj$ and $u + vj$ is to add, respectively, the two real numbers, so that the sum of the two is the new number given by $(x + u) + (y + v)j$.
+
+In the space below, show the complete contents of a file named \mintinline{c++}|Hyperbolic.cpp| which would supply the definition of the add and output methods whose prototypes are given above marked by the comments.  In this problem, show the entire contents of \mintinline{c++}|Hyperbolic.cpp| (including all required \mintinline{c++}|#include| and \mintinline{c++}|using| statements that would need to appear in it).
+\answer{16.5cm}{%
+% Type your answers here
+}
+% Q10
+\item Define the function below which extends a given string into a string twice as long, by mirroring the characters of the original in place. If the given string \mintinline{c++}|s| is initially "\mintinline{c++}|abc|", the function changes the value of \mintinline{c++}|s| to be "\mintinline{c++}|abccba|"
+\answer{5.5cm}{%
+\mintinline{c++}|void copy_chars_mirror(std::string& s)|
+\{\\
+{ % Type your answers here
+\vskip 17cm
+}
+\}
+}
+% Q11
+\item Complete the C++ function whose header is given below. The function should take as input a \mintinline{c++}|std::vector| of \mintinline{c++}|std:string|s, and return a \mintinline{c++}|std::vector| of \mintinline{c++}|std:string|s containing only values \textbf{\textit{that appeared in the vector at least twice}} (in a case-insensitive manner).
+
+For example, if \mintinline{c++}|vec| contains the values\begin{codeblock}
+dog, mouse, cat, tiger, mouse, Mouse, tiger, DOG
+\end{codeblock}
+
+the vector returned by this method should contain:\begin{codeblock}
+dog, mouse, tiger
+\end{codeblock}
+
+The values in the returned vector should be in ASCII order and contain only lower cases as shown above.
+
+\end{enumerate}
+
+\begin{tip}
+	\textbf{TIP}
+	
+	Aim to use the STL to your advantage here; appropriate usage can make your job easier!
+\end{tip}
+
+\answerb{5.5cm}{%
+\mintinline{c++}|using namespace std;|\\
+\mintinline{c++}|vector<string> getRepeatedValuesVector(const vector<string>& vec)|
+\{\\
+{ % Type your answers here
+	\vskip 9cm
+}
+\}
+}
+
+\begin{center}
+	\vspace{0.1cm}
+	\large \textless The END of Homework \HWNumber\textgreater
+\end{center}
+
+\end{document}
