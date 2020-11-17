@@ -1,0 +1,36 @@
+/* 
+
+Demonstrates various error conditions in running the program.
+"ugrad> " is the unix command-line prompt in this case.
+
+You can assume that command-line arguments that are supposed to be
+numbers (numplayers and stock size) are tested with numbers, not other
+data types.  Ie, you don't have to handle that issue, only whether the
+values are valid or not.
+
+The main function should return 1 for any error condition, 0 otherwise.
+
+*/
+
+ugrad> ./skipbo false
+invalid program usage: invalid number of arguments
+ugrad> ./skipbo false 4 20
+invalid program usage: invalid number of arguments
+ugrad> ./skipbo false savedGame.txt
+invalid program usage: can't open input game file
+ugrad> ./skipbo false 4
+invalid program usage: can't open input game file
+ugrad>  ./skipbo flass 4 5 deck0.txt
+invalid program usage: invalid first argument
+ugrad> ./skipbo false 10 20 deck0.txt
+invalid program usage: num players must be 2-6
+ugrad> ./skipbo false 6 30 deck0.txt
+num players is 6
+invalid program usage: bad stock size
+ugrad> ./skipbo true 4 -10 deck0.txt
+num players is 4
+invalid program usage: bad stock size
+ugrad> ./skipbo true 3 30 mydeck.txt
+num players is 3
+stock size is 30
+invalid program usage: can't open deck file

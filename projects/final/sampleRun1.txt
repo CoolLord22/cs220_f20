@@ -1,0 +1,167 @@
+/* Demonstrates game play with illegal moves in running the program,
+and playing until a winner.  "ugrad> " is the unix command-line
+prompt in this case.
+*/
+
+
+ugrad> ./skipbo false 4 5 deck0.txt
+num players is 4
+stock size is 5
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/137  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/137  Build Piles: [SB]/1 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/137  Build Piles: [SB]/2 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/3
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/137  Build Piles: [SB]/3 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/2
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 5 b
+
+Draw: [XX]/137  Build Piles: [SB]/3 [1]/1 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/2
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  --  
+(m)ove [start] [end] or (d)raw ? m 6 b
+illegal command, try again
+
+Draw: [XX]/137  Build Piles: [SB]/3 [1]/1 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/2
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  --  
+(m)ove [start] [end] or (d)raw ? m 9 d
+illegal command, try again
+
+Draw: [XX]/137  Build Piles: [SB]/3 [1]/1 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/2
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  --  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/137  Build Piles: [SB]/4 [1]/1 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/1
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  --  
+(m)ove [start] [end] or (d)raw ? m 5 1
+
+Draw: [XX]/137  Build Piles: [SB]/4 [1]/1 --/0 --/0 
+Current Player0:  Stock{0}: [SB]/1
+   Discards{1-4}: [1]/1  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  --  --  
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/132  Build Piles: [SB]/4 [1]/1 --/0 --/0 
+Current Player1:  Stock{0}: [SB]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/132  Build Piles: [SB]/5 [1]/1 --/0 --/0 
+Current Player1:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  [1]  
+(m)ove [start] [end] or (d)raw ? m 5 c
+
+Draw: [XX]/132  Build Piles: [SB]/5 [1]/1 [1]/1 --/0 
+Current Player1:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [1]  --  
+(m)ove [start] [end] or (d)raw ? m 6 d
+
+Draw: [XX]/132  Build Piles: [SB]/5 [1]/1 [1]/1 [1]/1 
+Current Player1:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  --  --  
+(m)ove [start] [end] or (d)raw ? m 8 3
+illegal command, try again
+
+Draw: [XX]/132  Build Piles: [SB]/5 [1]/1 [1]/1 [1]/1 
+Current Player1:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  --  --  
+(m)ove [start] [end] or (d)raw ? m 7 3
+
+Draw: [XX]/132  Build Piles: [SB]/5 [1]/1 [1]/1 [1]/1 
+Current Player1:  Stock{0}: [SB]/4
+   Discards{1-4}: --/0  --/0  [1]/1  --/0  
+   Hand{5-9}: [1]  [1]  --  --  --  
+
+ >> Player2 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/127  Build Piles: [SB]/5 [1]/1 [1]/1 [1]/1 
+Current Player2:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [2]  [2]  [2]  
+(m)ove [start] [end] or (d)raw ? m 5 b
+
+Draw: [XX]/127  Build Piles: [SB]/5 [2]/2 [1]/1 [1]/1 
+Current Player2:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [2]  [2]  --  
+(m)ove [start] [end] or (d)raw ? m 6 c
+
+Draw: [XX]/127  Build Piles: [SB]/5 [2]/2 [2]/2 [1]/1 
+Current Player2:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [2]  --  --  
+(m)ove [start] [end] or (d)raw ? m 7 d
+
+Draw: [XX]/127  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player2:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 4
+
+Draw: [XX]/127  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player2:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  [2]/1  
+   Hand{5-9}: [2]  --  --  --  --  
+
+ >> Player3 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/122  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player3:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [2]  [2]  [2]  
+(m)ove [start] [end] or (d)raw ? m 2 3
+illegal command, try again
+
+Draw: [XX]/122  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player3:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [2]  [2]  [2]  
+(m)ove [start] [end] or (d)raw ? m 6 3
+
+Draw: [XX]/122  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player3:  Stock{0}: [1]/5
+   Discards{1-4}: --/0  --/0  [2]/1  --/0  
+   Hand{5-9}: [2]  [2]  [2]  [2]  --  
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/120  Build Piles: [SB]/5 [2]/2 [2]/2 [2]/2 
+Current Player0:  Stock{0}: [SB]/1
+   Discards{1-4}: [1]/1  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [1]  [1]  [2]  [2]  
+(m)ove [start] [end] or (d)raw ? m   0   b
+
+GAME OVER - Player0 wins!
+ugrad> 
+

@@ -1,0 +1,68 @@
+true 4 0
+Player0
+Stock 10
+9 6 0 8 3 6 6 9 0 1
+Hand 0
+
+Discard0 0
+
+Discard1 0
+
+Discard2 0
+
+Discard3 0
+
+Player1
+Stock 10
+4 12 7 11 3 0 11 12 11 2
+Hand 4
+3 6 12 8
+Discard0 1
+7
+Discard1 0
+
+Discard2 0
+
+Discard3 0
+
+Player2
+Stock 10
+5 10 6 9 5 2 11 0 7 12
+Hand 1
+8
+Discard0 0
+
+Discard1 1
+5
+Discard2 0
+
+Discard3 0
+
+Player3
+Stock 9
+7 11 3 3 0 8 2 10 12
+Hand 4
+9 12 10 10
+Discard0 0
+
+Discard1 0
+
+Discard2 1
+4
+Discard3 0
+
+Draw 107
+1 11 4 6 9 6 4 9 12 2 11 7 12 9 0 8 3 0 0 2
+4 10 5 4 0 1 4 3 7 5 1 8 3 9 1 11 5 7 7 0
+6 9 12 5 9 8 0 2 2 6 1 1 4 2 4 10 2 0 1 12
+10 12 1 10 10 5 9 1 8 5 5 7 6 11 0 6 11 3 12 7
+7 7 3 3 6 4 11 8 0 10 1 10 10 0 3 5 5 8 8 2
+4 2 0 9 11 8 4
+Build_a 2
+1 0
+Build_b 2
+0 2
+Build_c 0
+
+Build_d 0
+

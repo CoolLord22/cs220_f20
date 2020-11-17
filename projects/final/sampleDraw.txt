@@ -1,0 +1,138 @@
+/*
+Sample run showing player electing to draw cards from draw pile.
+Note that a player move of 'd' is only legal if the player's hand
+is completely empty.
+*/
+
+ugrad> ./skipbo false save1.txt
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/61  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/61  Build Piles: [SB]/1 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/61  Build Piles: [SB]/2 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 b
+
+Draw: [XX]/61  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  --  --  --  
+(m)ove [start] [end] or (d)raw ? d
+illegal command, try again
+
+Draw: [XX]/61  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/61  Build Piles: [SB]/3 [SB]/1 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  --  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 d
+
+Draw: [XX]/61  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: --  --  --  --  --  
+(m)ove [start] [end] or (d)raw ? d
+
+Draw: [XX]/56  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m a 1
+illegal command, try again
+
+Draw: [XX]/56  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 1
+
+Draw: [XX]/56  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: [SB]/1  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  --  
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/51  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? d
+illegal command, try again
+
+Draw: [XX]/51  Build Piles: [SB]/3 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/51  Build Piles: [SB]/4 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/51  Build Piles: [SB]/5 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/51  Build Piles: [SB]/6 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/51  Build Piles: [SB]/7 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  --  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/51  Build Piles: [SB]/8 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: --  --  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 a
+illegal command, try again
+
+Draw: [XX]/51  Build Piles: [SB]/8 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: --  --  --  --  --  
+(m)ove [start] [end] or (d)raw ? d
+
+Draw: [XX]/46  Build Piles: [SB]/8 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [12]  [12]  
+(m)ove [start] [end] or (d)raw ? m 8 1
+
+Draw: [XX]/46  Build Piles: [SB]/8 [SB]/1 --/0 [SB]/1 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: [12]/1  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [12]  --  
+
+ >> Player2 turn next
+(p)lay, (s)ave, or (q)uit ? q
+thanks for playing
+ugrad> 

@@ -1,0 +1,187 @@
+/* 
+Sample run showing two build piles being completed
+without and without SkipBos, and save to show the BuildPile stacking
+order and drawPile status. See save2.txt for the resulting draw pile.
+*/
+
+ugrad> ./skipbo false 4 24 deck1.txt
+num players is 4
+stock size is 24
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/61  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [1]/1 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [2]/23
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [2]/2 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [3]/22
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [3]/3 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [4]/21
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [4]/4 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [5]/20
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [5]/5 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [6]/19
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [6]/6 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [7]/18
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [7]/7 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [8]/17
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [8]/8 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [9]/16
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [9]/9 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [10]/10 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [11]/14
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+
+Draw: [XX]/61  Build Piles: [11]/11 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [12]/13
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 a
+build pile a full, set aside
+
+Draw: [XX]/61  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/12
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 3
+
+Draw: [XX]/61  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [1]/12
+   Discards{1-4}: --/0  --/0  [SB]/1  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  --  
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? p  
+Draw: [XX]/56  Build Piles: --/0 --/0 --/0 --/0 
+Current Player1:  Stock{0}: [1]/24
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [1]/1 --/0 --/0 
+Current Player1:  Stock{0}: [2]/23
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [2]/2 --/0 --/0 
+Current Player1:  Stock{0}: [3]/22
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [3]/3 --/0 --/0 
+Current Player1:  Stock{0}: [4]/21
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [4]/4 --/0 --/0 
+Current Player1:  Stock{0}: [5]/20
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [5]/5 --/0 --/0 
+Current Player1:  Stock{0}: [6]/19
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [6]/6 --/0 --/0 
+Current Player1:  Stock{0}: [7]/18
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [7]/7 --/0 --/0 
+Current Player1:  Stock{0}: [8]/17
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [8]/8 --/0 --/0 
+Current Player1:  Stock{0}: [9]/16
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/56  Build Piles: --/0 [9]/9 --/0 --/0 
+Current Player1:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 b
+
+Draw: [XX]/56  Build Piles: --/0 [SB]/10 --/0 --/0 
+Current Player1:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  [SB]  --  
+(m)ove [start] [end] or (d)raw ? m 6 b
+
+Draw: [XX]/56  Build Piles: --/0 [SB]/11 --/0 --/0 
+Current Player1:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  [SB]  --  --  
+(m)ove [start] [end] or (d)raw ? m 7 b
+build pile b full, set aside
+
+Draw: [XX]/56  Build Piles: --/0 --/0 --/0 --/0 
+Current Player1:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [SB]  [SB]  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 4
+
+Draw: [XX]/56  Build Piles: --/0 --/0 --/0 --/0 
+Current Player1:  Stock{0}: [10]/15
+   Discards{1-4}: --/0  --/0  --/0  [SB]/1  
+   Hand{5-9}: [SB]  --  --  --  --  
+
+ >> Player2 turn next
+(p)lay, (s)ave, or (q)uit ? s
+save filename: save2.txt
+ugrad> 
+
