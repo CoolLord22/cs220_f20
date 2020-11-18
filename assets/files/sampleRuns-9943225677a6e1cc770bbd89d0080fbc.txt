@@ -1,0 +1,53 @@
+/* Demonstrates various error conditions in running the program,
+also save and quit operations.  "ugrad> " is the unix command-line
+prompt in this case.
+*/
+
+ugrad> ./skipbo false
+invalid program usage: invalid number of arguments
+ugrad> ./skipbo false 4
+invalid program usage: can't open input game file
+ugrad> ./skipbo false 4 20
+invalid program usage: invalid number of arguments
+ugrad> ./skipbo false 4 10 deck0.txt
+num players is 4
+stock size is 10
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/117  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [2]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [2]  [3]  [3]  [3]  
+(m)ove [start] [end] or (d)raw ? m 5 1
+
+Draw: [XX]/117  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [2]/10
+   Discards{1-4}: [2]/1  --/0  --/0  --/0  
+   Hand{5-9}: [2]  [3]  [3]  [3]  --  
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? s
+save filename: save10.txt
+ugrad> ./skipbo false 4 20 deck0.txt
+num players is 4
+stock size is 20
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/77  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [5]/20
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [6]  [6]  [6]  [6]  [6]  
+(m)ove [start] [end] or (d)raw ? m 6 3
+
+Draw: [XX]/77  Build Piles: --/0 --/0 --/0 --/0 
+Current Player0:  Stock{0}: [5]/20
+   Discards{1-4}: --/0  --/0  [6]/1  --/0  
+   Hand{5-9}: [6]  [6]  [6]  [6]  --  
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? q
+thanks for playing
+ugrad> 
+

@@ -1,0 +1,82 @@
+/*
+Demonstrates game play in randomized mode. Saves to saveRand.txt.
+*/
+
+ugrad> ./skipbo true 4 10 deck0.txt
+num players is 4
+stock size is 10
+
+ >> Player1 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/117  Build Piles: --/0 --/0 --/0 --/0 
+Current Player1:  Stock{0}: [2]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [7]  [3]  [6]  [12]  [8]  
+(m)ove [start] [end] or (d)raw ? m 5 1
+
+Draw: [XX]/117  Build Piles: --/0 --/0 --/0 --/0 
+Current Player1:  Stock{0}: [2]/10
+   Discards{1-4}: [7]/1  --/0  --/0  --/0  
+   Hand{5-9}: [3]  [6]  [12]  [8]  --  
+
+ >> Player2 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/112  Build Piles: --/0 --/0 --/0 --/0 
+Current Player2:  Stock{0}: [12]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [1]  [5]  [8]  [SB]  [SB]  
+(m)ove [start] [end] or (d)raw ? m 5 a
+
+Draw: [XX]/112  Build Piles: [1]/1 --/0 --/0 --/0 
+Current Player2:  Stock{0}: [12]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [5]  [8]  [SB]  [SB]  --  
+(m)ove [start] [end] or (d)raw ? m 7 b
+
+Draw: [XX]/112  Build Piles: [1]/1 [SB]/1 --/0 --/0 
+Current Player2:  Stock{0}: [12]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [5]  [8]  [SB]  --  --  
+(m)ove [start] [end] or (d)raw ? m 7 a
+
+Draw: [XX]/112  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player2:  Stock{0}: [12]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [5]  [8]  --  --  --  
+(m)ove [start] [end] or (d)raw ? m 5 2
+
+Draw: [XX]/112  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player2:  Stock{0}: [12]/10
+   Discards{1-4}: --/0  [5]/1  --/0  --/0  
+   Hand{5-9}: [8]  --  --  --  --  
+
+ >> Player3 turn next
+(p)lay, (s)ave, or (q)uit ? p
+Draw: [XX]/107  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player3:  Stock{0}: [2]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [9]  [12]  [10]  [4]  [10]  
+(m)ove [start] [end] or (d)raw ? m 9 b
+illegal command, try again
+
+Draw: [XX]/107  Build Piles: [SB]/2 [SB]/1 --/0 --/0 
+Current Player3:  Stock{0}: [2]/10
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [9]  [12]  [10]  [4]  [10]  
+(m)ove [start] [end] or (d)raw ? m 0 b
+
+Draw: [XX]/107  Build Piles: [SB]/2 [2]/2 --/0 --/0 
+Current Player3:  Stock{0}: [12]/9
+   Discards{1-4}: --/0  --/0  --/0  --/0  
+   Hand{5-9}: [9]  [12]  [10]  [4]  [10]  
+(m)ove [start] [end] or (d)raw ? m 8 3
+
+Draw: [XX]/107  Build Piles: [SB]/2 [2]/2 --/0 --/0 
+Current Player3:  Stock{0}: [12]/9
+   Discards{1-4}: --/0  --/0  [4]/1  --/0  
+   Hand{5-9}: [9]  [12]  [10]  [10]  --  
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? s
+save filename: saveRand.txt
+ugrad> 

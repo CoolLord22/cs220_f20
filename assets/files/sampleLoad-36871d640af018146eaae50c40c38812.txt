@@ -1,0 +1,92 @@
+/*
+Demonstrates creating games by loading saved game states.
+In the first sample, we load save1.txt and then immediately save
+again to save11.txt. These files should be identical.
+
+In the second sample, we load a game that was saved with false shuffle
+mode, then override that with a true shuffle mode on the command line.
+We then save it immediately as save3.txt. Notice that the draw pile is 
+then shuffled in the new saved state (but stock piles remain as they
+were loaded in). 
+*/
+
+ugrad> ./skipbo false save1.txt
+
+ >> Player0 turn next
+(p)lay, (s)ave, or (q)uit ? s
+save filename: save11.txt
+ugrad> ./skipbo true save2.txt
+
+ >> Player2 turn next
+(p)lay, (s)ave, or (q)uit ? s
+save filename: save3.txt
+ugrad> more save3.txt
+true 4 2
+Player2
+Stock 24
+12 11 10 9 8 7 6 5 4 3 2 1 12 11 10 9 8 7 6 5
+4 3 2 1
+Hand 0
+
+Discard0 0
+
+Discard1 0
+
+Discard2 0
+
+Discard3 0
+
+Player3
+Stock 24
+12 11 10 9 8 7 6 5 4 3 2 1 12 11 10 9 8 7 6 5
+4 3 2 1
+Hand 0
+
+Discard0 0
+
+Discard1 0
+
+Discard2 0
+
+Discard3 0
+
+Player0
+Stock 12
+12 11 10 9 8 7 6 5 4 3 2 1
+Hand 4
+0 0 0 0
+Discard0 0
+
+Discard1 0
+
+Discard2 1
+0
+Discard3 0
+
+Player1
+Stock 15
+12 11 10 9 8 7 6 5 4 3 2 1 12 11 10
+Hand 1
+0
+Discard0 0
+
+Discard1 0
+
+Discard2 0
+
+Discard3 1
+0
+Draw 80
+6 7 10 6 5 0 3 0 5 1 10 11 8 4 6 2 11 0 11 10
+11 12 5 2 4 5 8 2 1 0 12 9 4 3 6 4 1 0 10 9
+5 0 0 8 12 1 0 6 11 1 7 9 3 9 3 8 7 1 2 2
+2 9 3 10 9 7 5 3 8 8 0 0 7 7 4 6 4 0 12 12
+Build_a 0
+
+Build_b 0
+
+Build_c 0
+
+Build_d 0
+
+ugrad>
